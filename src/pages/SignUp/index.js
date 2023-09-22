@@ -4,34 +4,36 @@ import {
   LoginContainer,
   Logo,
   CompanyName,
-  Link,
   Button,
+  Img,
 } from './styled';
 import logo from '../../assets/logobranco.png'
+import google from '../../assets/google.jpg'
+import apple from '../../assets/apple.png'
 
-export const SignIn = () => {
+export const SignUp = () => {
   const navigate = useNavigate()
 
   const handleNavigateHome = () => {
     navigate('/home')
   }
-  const handleNavigateForgetPassword = () => {
-    navigate('/forgot-password')
-  }
-  const handleNavigateSignUp = () => {
-    navigate('/sign-up')
-  }
 
   return (
     <>
       <LoginContainer>
-        <Logo src={logo} alt="Logo da Empresa" />
+        <div>
+          <Img src={google} alt='login via google' />
+          <Img src={apple} alt='login via apple' />
+        </div>
         <CompanyName>COOL TEA COMPANY</CompanyName>
+        <Input type="text" placeholder="Nome" />
         <Input type="email" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
-        <Button onClick={handleNavigateHome}>Entrar</Button>
-        <Link onClick={handleNavigateForgetPassword}>Esqueci minha senha</Link>
-        <Link onClick={handleNavigateSignUp}>Cadastrar</Link>
+        <Input type="password" placeholder="Confirme sua senha" />
+        <Button onClick={handleNavigateHome}>Cadastrar</Button>
+        <br />
+        <br />
+        <Logo src={logo} alt="Logo da Empresa" />
       </LoginContainer>
     </>
   );

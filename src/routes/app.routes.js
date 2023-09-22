@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { NotFound } from '../pages'
+import { Home, NotFound } from '../pages'
 
 export const AppRoutes = () => {
   return (
@@ -8,6 +8,7 @@ export const AppRoutes = () => {
       {/* <Sidebar /> */}
 
       <Routes>
+        <Route path='/home' element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -8,6 +8,10 @@ export const LoginContainer = styled.div`
   justify-content: center;
   height: 100vh;
 `
+export const Img = styled.img`
+  width: 30px;
+  margin: 30px;
+`
 
 export const Logo = styled.img`
   width: 100px;
