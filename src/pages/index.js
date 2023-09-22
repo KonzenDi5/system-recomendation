@@ -1,4 +1,5 @@
 export * from './SignIn'
+export * from './SignUp'
 export * from './ForgotPassword'
 export * from './NotFound'
 export * from './ResetPassword'
