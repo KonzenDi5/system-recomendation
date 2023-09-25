@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/input';
+import { Button } from '../../components/button';
 import {
   LoginContainer,
   Logo,
   CompanyName,
   Link,
-  Button,
-} from './styled';
+  } from './styled';
 import logo from '../../assets/logobranco.png'
 
 export const SignIn = () => {
@@ -29,7 +29,12 @@ export const SignIn = () => {
         <CompanyName>COOL TEA COMPANY</CompanyName>
         <Input type="email" placeholder="Email" />
         <Input type="password" placeholder="Senha" />
-        <Button onClick={handleNavigateHome}>Entrar</Button>
+        <Button
+          type={'submit'}
+          color={'blue'}
+          onClick={handleNavigateHome}
+          label={"Entra"}
+        />
         <Link onClick={handleNavigateForgetPassword}>Esqueci minha senha</Link>
         <Link onClick={handleNavigateSignUp}>Cadastrar</Link>
       </LoginContainer>
