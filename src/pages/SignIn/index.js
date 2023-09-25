@@ -48,7 +48,11 @@ export const SignIn = () => {
         <CompanyName>COOL TEA COMPANY</CompanyName>
         <Input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" placeholder="Senha" onChange={(e) => setSenha(e.target.value)} />
-        <Button onClick={handleNavigateHome}>Entrar</Button>
+        <Button
+          type={'submit'}
+          label={'Entrar'}
+          onClick={handleNavigateHome}
+        />
         <Link onClick={handleNavigateForgetPassword}>Esqueci minha senha</Link>
         <Link onClick={handleNavigateSignUp}>Cadastrar</Link>
       </LoginContainer>

@@ -11,6 +11,7 @@ export const DivContent = styled.div`
   & button {
     font-size: 18px;
     font-weight: 600;
+    margin-bottom: 5vh;
   }
 `
 
@@ -45,5 +46,5 @@ export const Card = styled.div`
   margin: 10px;
   background-color: ${Themes.lightBlue};
   border-radius: 30px;
-  padding: 30px;
+  padding: 10px 30px;
 `

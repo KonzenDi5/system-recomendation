@@ -34,7 +34,7 @@ export const Content = styled.div`
     font-weight: 700;
     width: 200px;
     height: 50px;
-    margin: 0 0 10vh 20px;
+    margin: 0 0 20vh 20px;
   }
 `
 
