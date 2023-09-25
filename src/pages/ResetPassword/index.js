@@ -3,10 +3,9 @@ import { Input } from '../../components/input';
 import logo from '../../assets/logobranco.png'
 import { Button, Link, LoginContainer, Logo } from '../SignIn/styled';
 import { useState } from 'react';
-import firebase from 'firebase/compat/app'; // Importe apenas o módulo 'firebase/app'
-import 'firebase/compat/auth'; // Use 'firebase/compat/auth' para compatibilidade com versões mais antigas do Firebase
-import firebaseConfig from './firebaseConfig'; // Importe sua configuração Firebase
-
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/auth'; 
+import firebaseConfig from '../../components/firebaseConfig'; 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
