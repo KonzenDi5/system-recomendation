@@ -11,10 +11,10 @@ import logo from '../../assets/logobranco.png'
 import google from '../../assets/google.jpg'
 import apple from '../../assets/apple.png'
 import { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import { firebaseConfig } from '../../components/firebaseConfig'; 
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/auth'; 
+import 'firebase/compat/firestore'; 
+import firebaseConfig from '../../components/firebaseConfig'; 
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
