@@ -11,7 +11,7 @@ import logo from '../../assets/logobranco.png';
 import { useState } from 'react';
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/auth'; 
-import firebaseConfig from '../../components/firebaseConfig'; 
+import firebaseConfig from '../../server/firebaseConfig'; 
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

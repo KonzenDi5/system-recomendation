@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { DivContent, Progress, ProgressBar } from "./style"
+import { Card, Content, DivContent, Progress, ProgressBar, Title } from "./style"
 import { Button } from "../../components/button";
+import { useNavigate } from "react-router-dom";
 
 export const Questions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState([])
   const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const navigate = useNavigate()
 
   const questions = [
     { 
@@ -27,12 +29,10 @@ export const Questions = () => {
   const nextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
+    } else {
+      console.log(answers)
+      navigate('/trilha')
     }
-  }
-
-  const handleAnswer = (answer) => {
-    setAnswers(prevAnswers => [...prevAnswers, answer]);
-    nextQuestion();
   }
 
   const selectAnswer = (answer) => {
@@ -44,28 +44,29 @@ export const Questions = () => {
         <ProgressBar>
           <Progress width={`${((currentQuestion) / (questions.length)) * 100}%`} />
         </ProgressBar>
-        <div>
-          <h2>{questions[currentQuestion].question}</h2>
+        <Content>
+          <Title>{questions[currentQuestion].question}</Title>
           {questions[currentQuestion].answers.map((answer, index) => (
-              <button 
+              <Card 
               key={index} 
               onClick={() => selectAnswer(answer)}
-              style={answer === selectedAnswer ? { backgroundColor: 'lightgray' } : {}}
+              style={answer === selectedAnswer ? { backgroundColor: '#7A81DA'} : {}}
           >
               {answer}
-          </button>
+          </Card>
           ))}
-        </div>
+        </Content>
         <Button 
+          label={'Next Question'}
+          type={'submit'}
           onClick={() => {
             if (selectedAnswer) {
               setAnswers(prevAnswers => [...prevAnswers, selectedAnswer]);
               setSelectedAnswer(null);
               nextQuestion();
             }
-          }}>
-          Next Question
-        </Button>
+          }}
+        />
       </DivContent>
     )
   }

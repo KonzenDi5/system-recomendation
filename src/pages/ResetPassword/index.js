@@ -6,7 +6,8 @@ import { Button } from '../../components/button';
 import { useState } from 'react';
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/auth'; 
-import firebaseConfig from '../../components/firebaseConfig'; 
+import firebaseConfig from '../../server/firebaseConfig.js'; 
+
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
