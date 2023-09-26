@@ -31,7 +31,7 @@ export const Questions = () => {
       setCurrentQuestion(currentQuestion + 1)
     } else {
       console.log(answers)
-      navigate('/trilha')
+      navigate('/trail')
     }
   }
 
