@@ -1,3 +1,6 @@
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/auth'; 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCxwD7RIgV4oEtV1j7_0I5U9eg9mjvVT_o",
   authDomain: "banco-cool-tea.firebaseapp.com",
@@ -8,6 +11,8 @@ const firebaseConfig = {
   appId: "1:736862840318:web:06afc594e752e1a84b8caf",
   measurementId: "G-R9CRTH0VQG"
 };
+
+firebase.initializeApp(firebaseConfig);
 
 /*
 import { initializeApp } from "firebase/app";

@@ -29,15 +29,3 @@ export const Link = styled.a`
     text-decoration: underline;
   }
 `
-
-export const Button = styled.button`
-  padding: 10px 30px;
-  background-color: ${Themes.lightBlue};
-  color: ${Themes.purple};
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  &:hover {
-    color: ${Themes.darkBlue};
-  }
-`

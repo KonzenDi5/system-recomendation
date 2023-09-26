@@ -1,17 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/input';
+import { Button } from '../../components/button';
 import {
   LoginContainer,
   Logo,
   CompanyName,
   Link,
-  Button,
-} from './styled';
+  } from './styled';
 import logo from '../../assets/logobranco.png';
 import { useState } from 'react';
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/auth'; 
-import firebaseConfig from '../../components/firebaseConfig'; 
+import firebaseConfig from '../../server/firebaseConfig'; 
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -48,7 +48,11 @@ export const SignIn = () => {
         <CompanyName>COOL TEA COMPANY</CompanyName>
         <Input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
         <Input type="password" placeholder="Senha" onChange={(e) => setSenha(e.target.value)} />
-        <Button onClick={handleNavigateHome}>Entrar</Button>
+        <Button
+          type={'submit'}
+          label={'Entrar'}
+          onClick={handleNavigateHome}
+        />
         <Link onClick={handleNavigateForgetPassword}>Esqueci minha senha</Link>
         <Link onClick={handleNavigateSignUp}>Cadastrar</Link>
       </LoginContainer>
