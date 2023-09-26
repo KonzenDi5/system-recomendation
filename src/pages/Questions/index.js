@@ -75,7 +75,7 @@ export const Questions = () => {
         "d) Sinto uma forte irritação quando as coisas estão fora do meu controle."
       ]
     },
-    // Adicione aqui as outras perguntas e respostas
+    // podemos por mais perguntas aqui
   ];
 
   const nextQuestion = () => {
@@ -91,7 +91,7 @@ export const Questions = () => {
     setSelectedAnswer({ answer, code: generateUniqueCode(currentQuestion, answerIndex) });
   };
 
-  // Verificar se currentQuestion é um índice válido
+  //currentQuestion é um índice válido?
   if (currentQuestion >= questions.length || currentQuestion < 0) {
     return <div>Erro: Índice de pergunta inválido.</div>;
   }
@@ -133,6 +133,7 @@ export const Questions = () => {
             setSelectedAnswer(null);
             nextQuestion();
           }
+          //levar para o register após a última 
         }}
       />
     </DivContent>
