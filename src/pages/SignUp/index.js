@@ -26,32 +26,38 @@ export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleNavigateHome = () => {
-    if (senha === confirmarSenha) {
-      firebase.auth().createUserWithEmailAndPassword(email, senha)
-        .then((userCredential) => {
-          // Registro bem-sucedido, agora você pode adicionar dados ao Firestore
-          const user = userCredential.user;
-          const db = firebase.firestore();
-          db.collection('users').doc(user.uid).set({
-            nome: nome,
-            email: email,
-          })
-            .then(() => {
-              console.log('Dados do usuário adicionados ao Firestore com sucesso.');
-              navigate('/home');
-            })
-            .catch((error) => {
-              console.error('Erro ao adicionar dados do usuário ao Firestore:', error);
-            });
-        })
-        .catch((error) => {
-          console.error('Erro no registro:', error);
-        });
-    } else {
-      console.error('As senhas não coincidem.');
+    if (!nome || !email || !senha || !confirmarSenha) {
+      setErrorMessage('Por favor, preencha todos os campos.');
+      return;
     }
+
+    if (senha !== confirmarSenha) {
+      setErrorMessage('As senhas não coincidem.');
+      return;
+    }
+
+    firebase.auth().createUserWithEmailAndPassword(email, senha)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        const db = firebase.firestore();
+        db.collection('usuarios').doc(user.uid).set({
+          nome: nome,
+          email: email,
+        })
+          .then(() => {
+            console.log('Dados do usuário adicionados ao Firestore com sucesso.');
+            navigate('/home');
+          })
+          .catch((error) => {
+            console.error('Erro ao adicionar dados do usuário ao Firestore:', error);
+          });
+      })
+      .catch((error) => {
+        setErrorMessage('Erro no registro: ' + error.message);
+      });
   }
 
   return (
@@ -67,6 +73,7 @@ export const SignUp = () => {
         <Input type="password" placeholder="Senha" onChange={(e) => setSenha(e.target.value)} />
         <Input type="password" placeholder="Confirme sua senha" onChange={(e) => setConfirmarSenha(e.target.value)} />
         <Button onClick={handleNavigateHome}>Cadastrar</Button>
+        {errorMessage && <p>{errorMessage}</p>}
         <br />
         <br />
         <Logo src={logo} alt="Logo da Empresa" />
