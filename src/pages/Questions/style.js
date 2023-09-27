@@ -46,5 +46,5 @@ export const Card = styled.div`
   margin: 10px;
   background-color: ${Themes.lightBlue};
   border-radius: 30px;
-  padding: 10px 30px;
+  padding: 20px 30px;
 `

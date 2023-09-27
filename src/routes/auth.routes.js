@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { ForgotPassword, NotFound, SignIn, ResetPassword, SignUp, Home, Initial, Questions } from '../pages'
+import { ForgotPassword, NotFound, SignIn, ResetPassword, SignUp, Home, Initial, Questions, Trail } from '../pages'
 
 export const AuthRoutes = () => {
   return (
@@ -15,6 +15,7 @@ export const AuthRoutes = () => {
       {/* Transferir para app.routes mas precisa contruir o context, depois faço isso */}
       <Route path='/home' element={<Home />} />
       <Route path='/questions' element={<Questions />} />
+      <Route path='/trail' element={<Trail />} />
     </Routes>
   )
 }

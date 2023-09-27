@@ -83,7 +83,7 @@ export const Questions = () => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       localStorage.setItem("answers", JSON.stringify(answers));
-      navigate('/sign-up')
+      navigate("/sign-up");
     }
   };
 
