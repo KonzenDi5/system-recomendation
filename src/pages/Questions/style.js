@@ -28,7 +28,9 @@ export const Progress = styled.div`
   height: 100%;
   border-radius: 10px;
   background-color: ${Themes.purple};
+  transition: width 0.3s ease; /* Adiciona uma transição suave à largura */
 `
+
 export const Content = styled.div`
   width: 100vw;
 `
@@ -47,4 +49,16 @@ export const Card = styled.div`
   background-color: ${Themes.lightBlue};
   border-radius: 30px;
   padding: 20px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave à cor de fundo */
+`
+
+//  classe para o botão selecionado
+export const Button = styled.button`
+  cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Adiciona uma transição suave ao brilho */
+  
+  &.Button-selected {
+    box-shadow: 0 0 10px rgba(122, 129, 218, 0.8); /* Adiciona um leve brilho ao botão selecionado */
+  }
 `

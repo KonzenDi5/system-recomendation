@@ -24,8 +24,8 @@ export const Questions = () => {
     { 
       question: "Qual seu nível de disposição? ",
       answers: [
-        " Sinto disposição para realizar todas as atividades do meu dia.",
-        " Sinto uma leve sensação de cansaço, mas sem muitos problemas para realizar minhas atividades.",
+        "a) Sinto disposição para realizar todas as atividades do meu dia.",
+        "b) Sinto uma leve sensação de cansaço, mas sem muitos problemas para realizar minhas atividades.",
         " Me sinto bastante cansado, pois realizo muitas atividades no meu dia.",
         " Me sinto constantemente cansado e sem motivação para realizar minhas atividades."
       ]
