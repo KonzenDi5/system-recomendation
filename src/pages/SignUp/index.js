@@ -56,7 +56,7 @@ export const SignUp = () => {
           .then(() => {
             console.log('Dados do usuário e respostas adicionados ao Firestore com sucesso.');
             
-            // Limpe as respostas no localStorage após o registro, se necessário
+            // Limpando as respostas no localStorage após o registro, se necessário
             localStorage.removeItem('answers');
 
             navigate('/home');
