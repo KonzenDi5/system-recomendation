@@ -44,14 +44,14 @@ export const SignUp = () => {
         const user = userCredential.user;
         const db = firebase.firestore();
         
-        // Obtenha as respostas do localStorage
+        // Odtendo as respostas do localStorage
         const storedAnswers = JSON.parse(localStorage.getItem('answers'));
 
-        // Adicione os dados do usuário e as respostas ao Firestore
+        // Adicionando os dados do usuário e as respostas ao Firestore
         db.collection('usuarios').doc(user.uid).set({
           nome: nome,
           email: email,
-          respostas: storedAnswers || [], // Use as respostas armazenadas ou um array vazio
+          respostas: storedAnswers || [], // Use as respostas armazenadas
         })
           .then(() => {
             console.log('Dados do usuário e respostas adicionados ao Firestore com sucesso.');
