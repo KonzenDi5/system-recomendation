@@ -59,7 +59,7 @@ export const SignUp = () => {
             // Limpando as respostas no localStorage após o registro, se necessário
             localStorage.removeItem('answers');
 
-            navigate('/home');
+            navigate('/result');
           })
           .catch((error) => {
             console.error('Erro ao adicionar dados do usuário ao Firestore:', error);
