@@ -1,7 +1,7 @@
 import firebase from 'firebase/compat/app'; 
 import 'firebase/compat/auth'; 
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCxwD7RIgV4oEtV1j7_0I5U9eg9mjvVT_o",
   authDomain: "banco-cool-tea.firebaseapp.com",
   databaseURL: "https://banco-cool-tea-default-rtdb.firebaseio.com",

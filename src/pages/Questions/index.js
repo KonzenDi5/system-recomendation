@@ -22,76 +22,85 @@ export const Questions = () => {
 
   const questions = [
     { 
-      question: "Qual seu nível de disposição? ",
+      question: "Qual seu nível de disposição?",
       answers: [
-        "a) Sinto disposição para realizar todas as atividades do meu dia.",
-        "b) Sinto uma leve sensação de cansaço, mas sem muitos problemas para realizar minhas atividades.",
-        " Me sinto bastante cansado, pois realizo muitas atividades no meu dia.",
-        " Me sinto constantemente cansado e sem motivação para realizar minhas atividades."
+        { text: "a) Sinto disposição para realizar todas as atividades do meu dia.", value: 5 },
+        { text: "b) Sinto uma leve sensação de cansaço, mas sem muitos problemas para realizar minhas atividades.", value: 4 },
+        { text: "c) Me sinto bastante cansado, pois realizo muitas atividades no meu dia.", value: 3 },
+        { text: "d) Me sinto constantemente cansado e sem motivação para realizar minhas atividades.", value: 2 }
       ]
     },
     { 
-      question: "Como é sua alimentação? ",
+      question: "Como é sua alimentação?",
       answers: [
-        " Tenho cuidado para manter uma dieta saudável e equilibrada.",
-        " Possuo uma boa educação alimentar e raramente exagero.",
-        " Como bastante fast food e/ou doces durante a semana, mas tento me alimentar bem às vezes.",
-        " Na correria do dia a dia, acabo não conseguindo me alimentar de forma saudável."
+        { text: "Tenho cuidado para manter uma dieta saudável e equilibrada.", value: 5 },
+        { text: "Possuo uma boa educação alimentar e raramente exagero.", value: 4 },
+        { text: "Como bastante fast food e/ou doces durante a semana, mas tento me alimentar bem às vezes.", value: 3 },
+        { text: "Na correria do dia a dia, acabo não conseguindo me alimentar de forma saudável.", value: 2 }
       ]
     },
     { 
-      question: "Qual seu nível de estresse atualmente? ",
+      question: "Qual seu nível de estresse atualmente?",
       answers: [
-        " Consigo encarar minha rotina de forma calma e controlada.",
-        " Possuo alguns poucos momentos de irritação durante a semana.",
-        " Passo grande parte do meu dia irritado/estressado, mas consigo separar algum momento do meu dia para relaxar.",
-        " Estou em constante pressão e estresse, sinto que estou prestes a explodir."
+        { text: "Consigo encarar minha rotina de forma calma e controlada.", value: 5 },
+        { text: "Possuo alguns poucos momentos de irritação durante a semana.", value: 4 },
+        { text: "Passo grande parte do meu dia irritado/estressado, mas consigo separar algum momento do meu dia para relaxar.", value: 3 },
+        { text: "Estou em constante pressão e estresse, sinto que estou prestes a explodir.", value: 2 }
       ]
     },
     { 
-      question: "Como estão seus níveis de foco e atenção? ",
+      question: "Como estão seus níveis de foco e atenção?",
       answers: [
-        " Consigo focar nas minhas atividades de forma plena e sem distrações.",
-        " Consigo realizar minhas tarefas diárias, mas me distraio em alguns momentos.",
-        " Tenho pensamentos repetitivos e não consigo focar no que preciso fazer.",
-        " Estou sempre preocupado(a) com o futuro e/ou triste com o passado."
+        { text: "Consigo focar nas minhas atividades de forma plena e sem distrações.", value: 5 },
+        { text: "Consigo realizar minhas tarefas diárias, mas me distraio em alguns momentos.", value: 4 },
+        { text: "Tenho pensamentos repetitivos e não consigo focar no que preciso fazer.", value: 3 },
+        { text: "Estou sempre preocupado(a) com o futuro e/ou triste com o passado.", value: 2 }
       ]
     },
     { 
-      question: "Como você se sente em seu círculo social? ",
+      question: "Como você se sente em seu círculo social?",
       answers: [
-        " Possuo uma ótima rede de apoio e faço amigos facilmente.",
-        " Tenho um bom ciclo de relações sociais.",
-        " Tenho dificuldades para fazer amizades.",
-        " Me sinto muito sozinho(a) e não sei como criar uma rede de apoio."
+        { text: "Possuo uma ótima rede de apoio e faço amigos facilmente.", value: 5 },
+        { text: "Tenho um bom ciclo de relações sociais.", value: 4 },
+        { text: "Tenho dificuldades para fazer amizades.", value: 3 },
+        { text: "Me sinto muito sozinho(a) e não sei como criar uma rede de apoio.", value: 2 }
       ]
     },
     { 
-      question: "Espiritualidade e Perspectiva de Vida ",
+      question: "Espiritualidade e Perspectiva de Vida",
       answers: [
-        " Sempre aprendo com momentos difíceis e estou em constante evolução.",
-        " Possuo facilidade em aceitar o momento presente e agradeço pelas minhas conquistas.",
-        " Tenho dificuldades em vivenciar situações desafiadoras e me sinto triste por estar desconfortável.",
-        " Sinto uma forte irritação quando as coisas estão fora do meu controle."
+        { text: "Sempre aprendo com momentos difíceis e estou em constante evolução.", value: 5 },
+        { text: "Possuo facilidade em aceitar o momento presente e agradeço pelas minhas conquistas.", value: 4 },
+        { text: "Tenho dificuldades em vivenciar situações desafiadoras e me sinto triste por estar desconfortável.", value: 3 },
+        { text: "Sinto uma forte irritação quando as coisas estão fora do meu controle.", value: 2 }
       ]
     },
-    // podemos por mais perguntas aqui
+    // Outras perguntas aqui
   ];
+
+  const calculateTotalValue = () => {
+    let totalValue = 0;
+    for (const answer of answers) {
+      totalValue += answer.value;
+    }
+    return totalValue;
+  };
 
   const nextQuestion = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      const totalValue = calculateTotalValue();
+      console.log("Valor Total:", totalValue);
       localStorage.setItem("answers", JSON.stringify(answers));
       navigate("/sign-up");
     }
   };
-
   const selectAnswer = (answer, answerIndex) => {
-    setSelectedAnswer({ answer, code: generateUniqueCode(currentQuestion, answerIndex) });
+    const selectedValue = questions[currentQuestion].answers[answerIndex].value;
+    setSelectedAnswer({ answer, code: generateUniqueCode(currentQuestion, answerIndex), value: selectedValue });
   };
 
-  //currentQuestion é um índice válido?
   if (currentQuestion >= questions.length || currentQuestion < 0) {
     return <div>Erro: Índice de pergunta inválido.</div>;
   }
@@ -106,14 +115,14 @@ export const Questions = () => {
         {questions[currentQuestion].answers.map((answer, index) => (
           <Card
             key={index}
-            onClick={() => selectAnswer(answer, index)}
+            onClick={() => selectAnswer(answer.text, index)}
             style={
-              selectedAnswer && selectedAnswer.answer === answer
+              selectedAnswer && selectedAnswer.answer === answer.text
                 ? { backgroundColor: "#7A81DA" }
                 : {}
             }
           >
-            {answer}
+            {answer.text}
           </Card>
         ))}
       </Content>
@@ -128,12 +137,12 @@ export const Questions = () => {
                 question: questions[currentQuestion].question,
                 answer: selectedAnswer.answer,
                 code: selectedAnswer.code,
+                value: selectedAnswer.value
               },
             ]);
             setSelectedAnswer(null);
             nextQuestion();
           }
-          //levar para o register após a última 
         }}
       />
     </DivContent>

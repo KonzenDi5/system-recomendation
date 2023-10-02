@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
-import { Resultado, ForgotPassword, NotFound, SignIn, ResetPassword, SignUp, Home, Initial, Questions, Trail  } from '../pages'
+import { Resultado, ForgotPassword, NotFound, SignIn, ResetPassword, SignUp, Home, Initial, Questions  } from '../pages'
 
 
 export const AuthRoutes = () => {
@@ -18,7 +18,6 @@ export const AuthRoutes = () => {
       <Route path='/home' element={<Home />} />
       <Route path='/questions' element={<Questions />} />
       <Route path="/result" element={<Resultado />} />
-      <Route path='/trail' element={<Trail />} />
     </Routes>
   )
 }
