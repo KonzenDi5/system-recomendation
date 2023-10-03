@@ -7,6 +7,7 @@ export const Questions = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [totalValue, setTotalValue] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,10 +25,10 @@ export const Questions = () => {
     { 
       question: "Qual seu nível de disposição?",
       answers: [
-        { text: "a) Sinto disposição para realizar todas as atividades do meu dia.", value: 5 },
-        { text: "b) Sinto uma leve sensação de cansaço, mas sem muitos problemas para realizar minhas atividades.", value: 4 },
-        { text: "c) Me sinto bastante cansado, pois realizo muitas atividades no meu dia.", value: 3 },
-        { text: "d) Me sinto constantemente cansado e sem motivação para realizar minhas atividades.", value: 2 }
+        { text: " Sinto disposição para realizar todas as atividades do meu dia.", value: 5 },
+        { text: " Sinto uma leve sensação de cansaço, mas sem muitos problemas para realizar minhas atividades.", value: 4 },
+        { text: " Me sinto bastante cansado, pois realizo muitas atividades no meu dia.", value: 3 },
+        { text: " Me sinto constantemente cansado e sem motivação para realizar minhas atividades.", value: 2 }
       ]
     },
     { 
@@ -81,21 +82,27 @@ export const Questions = () => {
   const calculateTotalValue = () => {
     let totalValue = 0;
     for (const answer of answers) {
-      totalValue += answer.value;
+      if (typeof answer.value === 'number') {
+        totalValue += answer.value;
+      }
     }
     return totalValue;
   };
 
-  const nextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      const totalValue = calculateTotalValue();
-      console.log("Valor Total:", totalValue);
-      localStorage.setItem("answers", JSON.stringify(answers));
-      navigate("/sign-up");
-    }
-  };
+const nextQuestion = () => {
+  if (currentQuestion < questions.length - 1) {
+    setCurrentQuestion(currentQuestion + 1);
+  } else {
+    const totalValue = calculateTotalValue();
+    setTotalValue(totalValue);
+    localStorage.setItem("answers", JSON.stringify(answers));
+    localStorage.setItem("valueQuestions", totalValue); // Salva o valor total nas respostas
+    navigate("/sign-up");
+  }
+};
+
+
+
   const selectAnswer = (answer, answerIndex) => {
     const selectedValue = questions[currentQuestion].answers[answerIndex].value;
     setSelectedAnswer({ answer, code: generateUniqueCode(currentQuestion, answerIndex), value: selectedValue });
@@ -145,6 +152,16 @@ export const Questions = () => {
           }
         }}
       />
+      {currentQuestion >= questions.length && (
+        <div>
+          <p>Valor Total: {totalValue}</p>
+          <Button
+            label={"Continuar"}
+            type={"button"}
+            onClick={() => navigate("/sign-up")}
+          />
+        </div>
+      )}
     </DivContent>
   );
 };

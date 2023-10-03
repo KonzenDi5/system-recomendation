@@ -44,20 +44,25 @@ export const SignUp = () => {
         const user = userCredential.user;
         const db = firebase.firestore();
         
-        // Odtendo as respostas do localStorage
+        // Obtendo as respostas do localStorage
         const storedAnswers = JSON.parse(localStorage.getItem('answers'));
 
-        // Adicionando os dados do usuário e as respostas ao Firestore
+        // Obtendo o valor da chave "valorQuestions" do localStorage
+        const valorQuestions = localStorage.getItem('valueQuestions') || 0;
+
+        // Adicionando os dados do usuário, as respostas e o valor das perguntas ao Firestore
         db.collection('usuarios').doc(user.uid).set({
           nome: nome,
           email: email,
-          respostas: storedAnswers || [], // Use as respostas armazenadas
+          respostas: storedAnswers || [],
+          totalPerguntas: valorQuestions, // Adicione o valor total das perguntas
         })
           .then(() => {
             console.log('Dados do usuário e respostas adicionados ao Firestore com sucesso.');
             
-            // Limpando as respostas no localStorage após o registro, se necessário
+            // Limpando as respostas e a chave "valorQuestions" no localStorage após o registro
             localStorage.removeItem('answers');
+            localStorage.removeItem('valueQuestions');
 
             navigate('/result');
           })
