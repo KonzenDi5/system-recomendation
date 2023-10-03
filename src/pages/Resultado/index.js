@@ -43,8 +43,10 @@ export const Resultado = () => {
   return (
     <div className='container'>
       <div className='headerPurple'>
+        <div className='text'>
         <h1>Olá {userName || 'Usuário'} </h1>
         <h2>Essa é sua trilha de aprendizado:</h2>
+        </div>
         <img className='trilha' alt='trilha' src={trilha} />
         <button>Ver trilha completa</button>
       </div>
