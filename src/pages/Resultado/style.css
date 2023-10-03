@@ -10,7 +10,7 @@
 
 .trilha{
     width: 350px;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 .headerPurple{
     display: flex;
@@ -45,7 +45,7 @@ button {
     color: #0091ff;
     width: 250px;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 .text{
     display: flex;
